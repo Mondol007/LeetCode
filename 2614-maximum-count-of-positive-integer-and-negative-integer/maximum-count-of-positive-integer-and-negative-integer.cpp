@@ -16,11 +16,6 @@ public:
             }
         }
 
-        if(pos > neg){
-            return pos;
-        }
-        else{
-            return neg;
-        }
+        return max(pos, neg);
     }
 };
