@@ -1,17 +1,22 @@
 class Solution {
 public:
     string makeFancyString(string s) {
-            string result;
+            int n = s.size();
+        if (n < 3) return s;
 
-    for (char c : s) {
-        int len = result.length();
-        // Check if the last two characters are the same as current
-        if (len >= 2 && result[len - 1] == c && result[len - 2] == c) {
-            continue; // skip this character
+        string result;
+        result.reserve(n); // Avoids reallocation
+
+        result.push_back(s[0]);
+        result.push_back(s[1]);
+
+        for (int i = 2; i < n; ++i) {
+            if (s[i] == result.back() && s[i] == result[result.size() - 2]) {
+                continue; // Skip if three consecutive same characters
+            }
+            result.push_back(s[i]);
         }
-        result += c;
-    }
 
-    return result;
+        return result;
     }
 };
